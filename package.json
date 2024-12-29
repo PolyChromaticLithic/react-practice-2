@@ -1,6 +1,7 @@
 {
   "name": "react.dev",
   "version": "0.0.0",
+  "homepage": "./",
   "main": "/dist/index.js",
   "scripts": {
     "start": "node index.js",
