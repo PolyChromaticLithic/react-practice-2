@@ -2,8 +2,9 @@ import React from "react";
 
 function Home() {
   return <>
-  <h1 className="center-text">Home Page</h1>
-  hello!
+  <h1>ほーむ</h1>
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+  スクロールテスト用
   </>;
 }
 

@@ -12,7 +12,7 @@ function Navbar() {
 
     return (
         <nav className={styles.navbar}>
-            <div className={styles['navbar-logo']}>Astar</div>
+            <Link to="/" className={styles['navbar-logo']}>Astarの素敵なホームページ</Link>
             <button className={styles['navbar-toggle']} onClick={toggleMenu}>☰</button>
             <ul
                 className={classNames(styles.navbarLinks, {
@@ -22,7 +22,7 @@ function Navbar() {
             >
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
-                <li><Link to="/services">Services</Link></li>
+                <li><Link to="/works">Works</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
             </ul>
         </nav>
