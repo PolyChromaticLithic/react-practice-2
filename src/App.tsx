@@ -7,8 +7,8 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./Navbar";
 import Footer from "./Footer"
 
+
 function App() {
-  
   return (
     <BrowserRouter>
       <div className="wrapper">
