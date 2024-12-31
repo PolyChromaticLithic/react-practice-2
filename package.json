@@ -8,20 +8,22 @@
     "npm": "10.8.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node --optimize_for_size --max_old_space_size=460 server.js",
     "build": "react-scripts build",
     "postinstall": "npm run build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
     "classnames": "^2.5.1",
+    "css-loader": "^7.1.2",
+    "express": "^4.21.2",
+    "heapdump": "^0.3.15",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.1",
-    "react-scripts": "^5.0.0",
-    "css-loader": "^7.1.2",
-    "@babel/plugin-proposal-private-property-in-object": "7.21.11"
+    "react-scripts": "^5.0.0"
   },
   "devDependencies": {
     "@types/react": "^19.0.2",
