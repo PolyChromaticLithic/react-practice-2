@@ -12,7 +12,8 @@ function Navbar() {
 
     return (
         <nav className={styles.navbar}>
-            <Link to="/" className={styles['navbar-logo']}>Astarの素敵なホームページ</Link>
+            {/* <Link to="/" className={styles['navbar-logo']}>Astarの素敵なホームページ</Link> */}
+            <Link to="/"><img src="./images/icon.jpg" className={styles['navbar-logo']} alt="logo" /></Link>
             <button className={styles['navbar-toggle']} onClick={toggleMenu}>☰</button>
             <ul
                 className={classNames(styles.navbarLinks, {
