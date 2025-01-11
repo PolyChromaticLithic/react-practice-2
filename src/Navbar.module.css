@@ -42,6 +42,10 @@ body {
 
 /* ロゴ部分 */
 .navbar-logo {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%); /* 縦中央に揃える */
   width: 40px;
   height: 40px;
   border-radius: 50%;
