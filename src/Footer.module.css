@@ -15,10 +15,11 @@ body {
     left: 0;
     bottom: 0;
     margin: 0%;
-    height: 180px;
-    padding: 22px;
+    height: 12rem;
+    padding: 1.5rem 1rem;
     background-color: #07141b;
     color: aliceblue;
+    z-index: 1;
 }
 
 .footerText {
