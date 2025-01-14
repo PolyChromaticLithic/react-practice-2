@@ -120,6 +120,10 @@ body {
     height: 3rem;
   }
 
+  .navbarLinks {
+    top: 3rem;
+  }
+
   .navbar-logo {
     left: 0.75rem;
     width: 1.875rem;
@@ -127,7 +131,7 @@ body {
   }
 
   .navbar-toggle {
-    right: 0.75rem;
+    right: 1rem;
     font-size: 1.125rem;
   }
 }
