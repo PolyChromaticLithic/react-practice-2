@@ -61,10 +61,27 @@ body {
     margin-bottom: 0px;
 }
 
+.brMobileOnly {
+    display: none;
+}
+
 ul {
     padding-left: 0;
 }
 
 li {
     list-style: none;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        height: 10rem;
+    }
+    .footerLinks {
+        flex-flow: column;
+        height: 4.2rem;
+    }
+    .brMobileOnly {
+        display: block;
+    }
 }
