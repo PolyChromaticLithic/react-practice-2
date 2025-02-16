@@ -73,11 +73,11 @@ ul {
   padding-bottom: 7rem;
 }
 
-@media (max-height: 420px) {
+/* @media (max-height: 420px) {
   .wrapper {
     padding-top: 3rem;
   }
-}
+} */
 
 @media (max-width: 768px) {
   .wrapper {
