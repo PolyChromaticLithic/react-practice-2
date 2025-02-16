@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-color: rgb(111, 129, 144) rgb(17, 29, 29);
+}
+
 body {
   background-color: rgb(17, 29, 29);
   font-family: sans-serif;
@@ -11,7 +15,7 @@ body {
 
 h1 {
   color: aliceblue;
-  margin-top: 0;
+  margin: 0.5rem 0;
   font-size: 22px;
 }
 
@@ -54,7 +58,7 @@ ul {
 
 
 .bodyContent {
-  margin: 20px 20px 20px 20px;
+  margin: 1.5rem;
   overflow: visible;
 }
 

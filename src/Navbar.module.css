@@ -136,6 +136,8 @@ body {
 
   .navbarLinksMobile li a {
     margin-left: 0rem;
+    width: 100%;
+    display: block;
     background: transparent;
     text-decoration: none;
     color: white;
@@ -143,8 +145,8 @@ body {
     transition: color 0.3s;
   }
   
-  .navbarLinks li a:hover {
-    color: #00bcd4;
+  .navbarLinksMobile li a:hover {
+    color: #06b8cf;
   }
 
   .navbar-toggle {
