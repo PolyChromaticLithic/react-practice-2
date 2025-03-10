@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import classNames from "classnames";
-import styles from "./Footer.module.css";
+'use client';
+
+import React from "react";
+import styles from "./styles.module.css";
 
 function Footer() {
     return (
@@ -20,4 +20,4 @@ function Footer() {
     );
 }
 
-export default Footer;
+export default Footer; 

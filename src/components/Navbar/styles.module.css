@@ -1,27 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
-body {
-  font-family: "Noto Sans JP", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-  background-color: rgb(31, 51, 51);
-}
-
 .navbarWrapper {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  height: 4rem;
   min-height: 4rem;
   box-sizing: border-box;
   justify-content: space-between;
-  /* align-items: center; */
   position: fixed;
   top: 0;
   left: 0;
-  /* height: auto; */
   width: calc(100% - 2rem);
-  /* padding: 1rem 2rem 1rem 1rem; */
   background: transparent;
   margin: 1rem 1rem 1rem 1rem;
   z-index: 999;
@@ -47,23 +37,12 @@ body {
 .navbar {
   display: flex;
   position: absolute;
-  /* box-sizing: border-box; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
-  /* padding: 1rem 2rem 1rem 1rem; */
-  /* margin: 1rem 1rem 1rem 1rem; */
-  /* margin-bottom: 1rem; */
   height: 4rem;
   font-family: "Noto Sans JP", sans-serif;
   top: 0;
   width: 100%;
 }
 
-
-
-
-
-/* ロゴ部分 */
 .navbar-logo {
   position: absolute;
   left: 1rem;
@@ -109,20 +88,23 @@ body {
   font-size: 1.5rem;
   color: white;
   cursor: pointer;
+  padding: 0;
 }
 
 .navbarLinksMobile {
   display: none;
   position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-/* レスポンシブデザイン：モバイル対応 */
 @media (max-width: 768px) {
   .navbarLinksMobile {
     box-sizing: border-box;
     margin: 0 auto;
-    left: auto;
-    right: auto;
+    left: 0;
+    right: 0;
     display: flex;
     flex-direction: column;
     list-style: none;
@@ -131,7 +113,11 @@ body {
     height: auto;
     width: 100%;
     padding: 0.5rem 1rem 1.5rem 1rem;
-    margin: 0rem 0rem 1rem 0rem;
+  }
+
+  .navbarLinksMobile.open {
+    opacity: 1;
+    visibility: visible;
   }
 
   .navbarLinksMobile li a {
@@ -156,25 +142,4 @@ body {
   .navbarLinks {
     display: none;
   }
-}
-
-/* @media (max-height: 420px) {
-  .navbar {
-    height: 3rem;
-  }
-
-  .navbarLinksMobile {
-    top: 3rem;
-  }
-
-  .navbar-logo {
-    left: 0.75rem;
-    width: 1.875rem;
-    height: 1.875rem;
-  }
-
-  .navbar-toggle {
-    right: 1rem;
-    font-size: 1.125rem;
-  }
-} */
+} 

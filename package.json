@@ -1,45 +1,24 @@
 {
   "name": "react.dev",
   "version": "0.0.0",
-  "homepage": "./",
-  "main": "/dist/index.js",
-  "engines": {
-    "node": "20.16",
-    "npm": "10.8.2"
-  },
   "scripts": {
-    "start": "node --optimize_for_size --max_old_space_size=460 server.js",
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
-    "postinstall": "npm run build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
     "classnames": "^2.5.1",
-    "css-loader": "^7.1.2",
-    "express": "^4.21.2",
-    "heapdump": "^0.3.15",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^7.1.1",
-    "react-scripts": "^5.0.0"
+    "next": "14.2.24",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^19.0.2",
-    "@types/react-dom": "^19.0.2"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "@types/node": "^20.11.24",
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
+    "typescript": "^5.3.3",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.24"
   }
 }
