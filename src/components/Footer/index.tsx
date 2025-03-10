@@ -14,7 +14,7 @@ function Footer() {
                     <li>GitHub : <a href="https://github.com/PolyChromaticLithic">PolyChromaticLithic</a></li>
                     <li>Mail : <a href="mailto:PolyChromaticLithic@outlook.jp">PolyChromaticLithic@outlook.jp</a></li>
                 </ul>
-                Copyright © 2024 Astar(PolyChromaticLithic).<br className={styles.brMobileOnly} /> All rights reserved.
+                <p className={styles.copyright}>Copyright © 2024 Astar(PolyChromaticLithic).<br className={styles.brMobileOnly} /> All rights reserved.</p>
             </div>
         </nav>
     );
