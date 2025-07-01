@@ -1,10 +1,12 @@
-import styles from '../styles.module.css'
+import commonStyles from '../common-page.module.css';
 
 export default function Contact() {
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Contact</h1>
-      <p className={styles.description}>このページは準備中です。</p>
+    <div className={commonStyles.pageContainer}>
+      <h1 className={commonStyles.pageTitle}>Contact</h1>
+      <div className={commonStyles.pageContent}>
+        <p>このページは準備中です。</p>
+      </div>
     </div>
-  )
-} 
+  );
+}

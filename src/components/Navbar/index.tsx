@@ -30,7 +30,7 @@ function Navbar() {
     };
 
     return (
-        <nav ref={contentRef} className={styles.navbarWrapper}>
+        <nav ref={contentRef} className={classNames(styles.navbarWrapper, { [styles.open]: menuOpen })}>
             <nav className={styles.navbar}>
                 <Link href="/"><img src="/images/icon.jpg" className={styles['navbar-logo']} alt="logo" /></Link>
                 <button className={styles['navbar-toggle']} onClick={toggleMenu}>☰</button>

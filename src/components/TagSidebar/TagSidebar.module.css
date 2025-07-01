@@ -1,0 +1,38 @@
+
+.sidebarContainer {
+  background-color: rgba(29, 57, 57, 0.2);
+  border: 1px solid rgba(29, 57, 57, 0.8);
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: fit-content; /* Stick to top */
+  position: sticky;
+  top: 10rem; /* Match the top padding of the main container */
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #00bcd4;
+}
+
+.tagList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tagLink {
+  color: #c5cae9;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.tagLink:hover {
+  color: #00bcd4;
+}
