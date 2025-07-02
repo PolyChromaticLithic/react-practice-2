@@ -17,7 +17,7 @@ export default async function TagSidebar() {
       <ul className={styles.tagList}>
         {tags.map((tag: any) => (
           <li key={tag.sys.id}>
-            <Link href={`/tags/${tag.fields.slug}`} className={styles.tagLink}>
+            <Link href={`/blog/tags/${tag.fields.slug}`} className={styles.tagLink}>
               {tag.fields.name}
             </Link>
           </li>

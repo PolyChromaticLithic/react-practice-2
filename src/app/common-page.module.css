@@ -19,6 +19,14 @@
   color: #dcdcdc;
 }
 
+.pageContent img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .pageContent h1, .pageContent h2, .pageContent h3 {
   margin-top: 2rem;
   margin-bottom: 1rem;

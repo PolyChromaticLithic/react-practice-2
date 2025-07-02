@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import client from '../../../lib/contentful';
-import blogSpecificStyles from '../../blog/blog-specific.module.css';
-import TagSidebar from '../../../components/TagSidebar';
+import client from '../../../../lib/contentful';
+import blogSpecificStyles from '../../blog-specific.module.css';
+import commonStyles from '../../../common-page.module.css';
+import TagSidebar from '../../../../components/TagSidebar';
 
 async function fetchTag(slug: string) {
   const entries = await client.getEntries({
@@ -34,7 +35,7 @@ export default async function TagPage({ params }: { params: { slug: string } }) 
   return (
     <div className={blogSpecificStyles.blogLayout}>
       <div>
-        <h1 className={blogSpecificStyles.title}>Tag: {tag.fields.name as string}</h1>
+        <h1 className={commonStyles.pageTitle}>Tag: {tag.fields.name as string}</h1>
         {posts.length > 0 ? (
           <ul className={blogSpecificStyles.postList}>
             {posts.map((post: any) => (

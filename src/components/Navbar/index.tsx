@@ -2,12 +2,16 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from 'next/navigation';
 import classNames from "classnames";
 import styles from "./styles.module.css";
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
+    const pathname = usePathname();
+
+    const pathSegments = pathname.split('/').filter(segment => segment);
 
     useEffect(() => {
         if (contentRef.current) {
@@ -32,7 +36,22 @@ function Navbar() {
     return (
         <nav ref={contentRef} className={classNames(styles.navbarWrapper, { [styles.open]: menuOpen })}>
             <nav className={styles.navbar}>
-                <Link href="/"><img src="/images/icon.jpg" className={styles['navbar-logo']} alt="logo" /></Link>
+                <div className={styles.logoContainer}>
+                    <Link href="/"><img src="/images/icon.jpg" className={styles['navbar-logo']} alt="logo" /></Link>
+                    <div className={styles.breadcrumbs}>
+                        {pathSegments.length > 0 && <span className={styles.separator}></span>}
+                        {pathSegments.map((segment, index) => {
+                            const href = `/${pathSegments.slice(0, index + 1).join('/')}`;
+                            const displaySegment = segment.charAt(0).toUpperCase() + segment.slice(1);
+                            return (
+                                <React.Fragment key={href}>
+                                    <Link href={href} className={styles.breadcrumbLink}>{displaySegment}</Link>
+                                    {index < pathSegments.length - 1 && <span className={styles.separator}></span>}
+                                </React.Fragment>
+                            );
+                        })}
+                    </div>
+                </div>
                 <button className={styles['navbar-toggle']} onClick={toggleMenu}>☰</button>
                 <ul className={styles.navbarLinks}>
                     <li><Link href="/">Home</Link></li>

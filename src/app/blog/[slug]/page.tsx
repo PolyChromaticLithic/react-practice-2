@@ -1,9 +1,24 @@
 import Link from 'next/link';
 import client from '../../../lib/contentful';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
+import { BLOCKS } from '@contentful/rich-text-types';
+import Image from 'next/image';
 import blogSpecificStyles from '../blog-specific.module.css';
 import commonStyles from '../../common-page.module.css';
 import TagSidebar from '../../../components/TagSidebar';
+
+const renderOptions: Options = {
+  renderNode: {
+    [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
+      const { file } = node.data.target.fields;
+      const { url } = file;
+      const { width, height } = file.details.image;
+      return (
+        <Image src={`https:${url}`} alt={file.fileName} width={width} height={height} />
+      );
+    },
+  },
+};
 
 async function fetchBlogPost(slug: string) {
   const entries = await client.getEntries({
@@ -30,7 +45,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         <p className={blogSpecificStyles.postDate}>{new Date(publishDate as string).toLocaleDateString()}</p>
         <div className={blogSpecificStyles.tagContainer}>
           {tags && (tags as any[]).map((tag: any) => (
-            <Link key={tag.sys.id} href={`/tags/${tag.fields.slug}`}>
+            <Link key={tag.sys.id} href={`/blog/tags/${tag.fields.slug}`}>
               <span className={blogSpecificStyles.tag}>
                 {tag.fields.name}
               </span>
@@ -38,7 +53,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           ))}
         </div>
         <div className={commonStyles.pageContent} style={{ marginTop: '2rem' }}>
-          {documentToReactComponents(content as any)}
+          {documentToReactComponents(content as any, renderOptions)}
         </div>
       </div>
       <TagSidebar />
