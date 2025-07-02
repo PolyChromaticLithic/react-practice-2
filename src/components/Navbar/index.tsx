@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
+import { useNotFound } from '../../context/NotFoundContext';
 import classNames from "classnames";
 import styles from "./styles.module.css";
 
@@ -10,8 +11,13 @@ function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
+    const { isNotFound } = useNotFound();
 
-    const pathSegments = pathname.split('/').filter(segment => segment);
+    let pathSegments = pathname.split('/').filter(segment => segment);
+
+    if (isNotFound && pathSegments.length > 0) {
+        pathSegments[pathSegments.length - 1] = '??';
+    }
 
     useEffect(() => {
         if (contentRef.current) {
@@ -43,6 +49,14 @@ function Navbar() {
                         {pathSegments.map((segment, index) => {
                             const href = `/${pathSegments.slice(0, index + 1).join('/')}`;
                             const displaySegment = segment.charAt(0).toUpperCase() + segment.slice(1);
+                            if (segment === '??') {
+                                return (
+                                    <React.Fragment key={segment}>
+                                        <span className={styles.breadcrumbLink}>{displaySegment}</span>
+                                        {index < pathSegments.length - 1 && <span className={styles.separator}></span>}
+                                    </React.Fragment>
+                                );
+                            }
                             return (
                                 <React.Fragment key={href}>
                                     <Link href={href} className={styles.breadcrumbLink}>{displaySegment}</Link>

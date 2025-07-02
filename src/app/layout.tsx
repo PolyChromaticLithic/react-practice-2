@@ -3,6 +3,7 @@ import { Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { NotFoundProvider } from '../context/NotFoundContext';
 
 const notoSansJP = Noto_Sans_JP({
   weight: ['200', '400', '700'],
@@ -23,11 +24,13 @@ export default function RootLayout({
   return (
     <html lang="ja" className={notoSansJP.className}>
       <body>
-        <Navbar />
-        <main>
-          {children}
-        </main>
-        <Footer />
+        <NotFoundProvider>
+          <Navbar />
+          <main>
+            {children}
+          </main>
+          <Footer />
+        </NotFoundProvider>
       </body>
     </html>
   )
