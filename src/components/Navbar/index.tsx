@@ -15,8 +15,23 @@ function Navbar() {
 
     let pathSegments = pathname.split('/').filter(segment => segment);
 
-    if (isNotFound && pathSegments.length > 0) {
-        pathSegments[pathSegments.length - 1] = '??';
+    if (isNotFound) {
+        if (pathSegments.length > 0) {
+            if (pathSegments[0] === 'blog') {
+                if (pathSegments.length > 1 && pathSegments[1] === 'tags') {
+                    pathSegments = ['blog', 'tags', '??'];
+                } else {
+                    pathSegments = ['blog', '??'];
+                }
+            } else if (['about', 'works', 'contact'].includes(pathSegments[0])) {
+                pathSegments = [pathSegments[0], '??'];
+            } else {
+                pathSegments = ['??'];
+            }
+        } else {
+            // Handles cases like a 404 on the root, though less common.
+            pathSegments = ['??'];
+        }
     }
 
     useEffect(() => {

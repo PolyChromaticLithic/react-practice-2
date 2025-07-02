@@ -29,11 +29,24 @@ async function fetchBlogPost(slug: string) {
   return entries.items[0];
 }
 
+import SetNotFound from '../../../components/SetNotFound';
+
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = await fetchBlogPost(params.slug);
 
   if (!post) {
-    return <div>Post not found</div>;
+    return (
+      <>
+        <SetNotFound />
+        <div className={commonStyles.pageContainer}>
+          <h1 className={commonStyles.pageTitle}>Post Not Found</h1>
+          <p className={commonStyles.pageContent}>The requested blog post could not be found.</p>
+          <p className={commonStyles.pageContent}>
+            View <Link href="/blog">all posts</Link>
+          </p>
+        </div>
+      </>
+    );
   }
 
   const { title, publishDate, content, tags } = post.fields;

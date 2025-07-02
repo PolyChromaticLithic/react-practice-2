@@ -22,12 +22,25 @@ async function fetchPostsByTagId(tagId: string) {
   return entries.items;
 }
 
+import SetNotFound from '../../../../components/SetNotFound';
+
 export default async function TagPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const tag = await fetchTag(slug);
 
   if (!tag) {
-    return <div>Tag not found</div>;
+    return (
+      <>
+        <SetNotFound />
+        <div className={commonStyles.pageContainer}>
+          <h1 className={commonStyles.pageTitle}>Tag Not Found</h1>
+          <p className={commonStyles.pageContent}>The requested tag could not be found.</p>
+          <p className={commonStyles.pageContent}>
+            View <Link href="/blog">all posts</Link>
+          </p>
+        </div>
+      </>
+    );
   }
 
   const posts = await fetchPostsByTagId(tag.sys.id);
