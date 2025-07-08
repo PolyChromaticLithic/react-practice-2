@@ -1,0 +1,25 @@
+.tagList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tagListItem {
+  margin-bottom: 0.5rem;
+}
+
+.tagLink {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.tagLink:hover {
+  background-color: #00bcd4;
+}
