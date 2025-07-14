@@ -1,24 +1,11 @@
 import Link from 'next/link';
 import client from '../../../lib/contentful';
-import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
-import { BLOCKS } from '@contentful/rich-text-types';
-import Image from 'next/image';
+import ReactMarkdown from 'react-markdown';
+import rehypeHighlight from 'rehype-highlight';
 import blogSpecificStyles from '../blog-specific.module.css';
 import commonStyles from '../../common-page.module.css';
 import TagSidebar from '../../../components/TagSidebar';
-
-const renderOptions: Options = {
-  renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
-      const { file } = node.data.target.fields;
-      const { url } = file;
-      const { width, height } = file.details.image;
-      return (
-        <Image src={`https:${url}`} alt={file.fileName} width={width} height={height} />
-      );
-    },
-  },
-};
+import SetNotFound from '../../../components/SetNotFound';
 
 async function fetchBlogPost(slug: string) {
   const entries = await client.getEntries({
@@ -28,8 +15,6 @@ async function fetchBlogPost(slug: string) {
   });
   return entries.items[0];
 }
-
-import SetNotFound from '../../../components/SetNotFound';
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = await fetchBlogPost(params.slug);
@@ -49,7 +34,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     );
   }
 
-  const { title, publishDate, content, tags } = post.fields;
+  const { title, publishDate, contentMarkdown, tags } = post.fields;
 
   return (
     <div className={blogSpecificStyles.blogLayout}>
@@ -66,7 +51,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           ))}
         </div>
         <div className={commonStyles.pageContent} style={{ marginTop: '2rem' }}>
-          {documentToReactComponents(content as any, renderOptions)}
+          <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+            {contentMarkdown as string}
+          </ReactMarkdown>
         </div>
       </div>
       <TagSidebar />

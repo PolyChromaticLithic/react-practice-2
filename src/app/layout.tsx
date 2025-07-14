@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
+import '../styles/iceberg.css';
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { NotFoundProvider } from '../context/NotFoundContext';
