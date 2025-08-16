@@ -1,0 +1,56 @@
+.codeBlockContainer {
+  position: relative;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.codeBlockHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3a4250; /* 少し明るいヘッダー背景 */
+  padding: 0.5rem 1rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.fileName {
+  color: #d8dee9;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.copyButton {
+  background-color: #4c566a;
+  color: #d8dee9;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.2s;
+}
+
+.copyButton:hover {
+  background-color: #5e81ac;
+}
+
+.codeBlock {
+  margin: 0;
+  padding: 1rem;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  /* ヘッダーがない場合のための角丸設定 */
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: #2e3440; /* Add background color to pre */
+}
+
+.codeBlock > code {
+  font-family: 'Fira Code', 'Courier New', monospace;
+}
+
+/* ヘッダーがない場合（ファイル名が指定されていない場合）のpreタグに角丸を適用 */
+.codeBlockContainer > pre:only-child {
+    border-radius: 8px;
+}

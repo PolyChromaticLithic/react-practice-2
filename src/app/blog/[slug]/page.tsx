@@ -6,6 +6,7 @@ import blogSpecificStyles from '../blog-specific.module.css';
 import commonStyles from '../../common-page.module.css';
 import TagSidebar from '../../../components/TagSidebar';
 import SetNotFound from '../../../components/SetNotFound';
+import CodeBlock from '../../../components/CodeBlock';
 
 async function fetchBlogPost(slug: string) {
   const entries = await client.getEntries({
@@ -51,7 +52,12 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           ))}
         </div>
         <div className={commonStyles.pageContent} style={{ marginTop: '2rem' }}>
-          <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+          <ReactMarkdown
+            rehypePlugins={[rehypeHighlight]}
+            components={{
+              code: CodeBlock,
+            }}
+          >
             {contentMarkdown as string}
           </ReactMarkdown>
         </div>
