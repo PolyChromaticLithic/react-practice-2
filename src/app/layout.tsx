@@ -13,7 +13,7 @@ const notoSansJP = Noto_Sans_JP({
 })
 
 export const metadata: Metadata = {
-  title: 'Astarの素敵なホームページ',
+  title: 'Astarのホームページ',
   description: 'Astarのポートフォリオサイトです。',
 }
 
