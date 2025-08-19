@@ -5,7 +5,10 @@ export default function Works() {
     <div className={commonStyles.pageContainer}>
       <h1 className={commonStyles.pageTitle}>Works</h1>
       <div className={commonStyles.pageContent}>
-        <p>このページは準備中です。</p>
+        <a href="/works/fizzbuzz" className={commonStyles.link}>
+          <h2>Fizzbuzz</h2>
+          <p>Click to play the Fizzbuzz game.</p>
+        </a>
       </div>
     </div>
   );

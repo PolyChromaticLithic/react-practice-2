@@ -1,0 +1,14 @@
+.button {
+  background-color: rgba(29, 57, 57, 0.2);
+  border: 1px solid rgba(29, 57, 57, 0.8);
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 1rem;
+  margin-right: 1rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 4px 8px rgba(72, 144, 144, 0.1);
+}
