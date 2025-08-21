@@ -16,7 +16,15 @@ export default function Fizzbuzz() {
   );
 }
 
-type FizzbuzzOutput = 'number' | 'fizz' | 'buzz' | 'fizzbuzz';
+const fizzbuzzOutputs = ['number', 'fizz', 'buzz', 'fizzbuzz'] as const;
+type FizzbuzzOutput = (typeof fizzbuzzOutputs)[number];
+
+const keyToActionMap = {
+  'a': 'number',
+  's': 'fizz',
+  'd': 'buzz',
+  'f': 'fizzbuzz',
+} as const;
 
 function FizzbuzzUI() {
   const [number, setNumber] = useState(1);
@@ -39,28 +47,22 @@ function FizzbuzzUI() {
     setCount(2);
   };
 
-  const mapRef = useRef(new Map<FizzbuzzOutput, HTMLButtonElement | null>());
-
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement | null;
       if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
       if (e.repeat) return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
-      if (e.key.toLowerCase() === "a") {
-        mapRef.current.get('number')?.click();
-      }
-      if (e.key.toLowerCase() === "s") {
-        mapRef.current.get('fizz')?.click();
-      }
-      if (e.key.toLowerCase() === "d") {
-        mapRef.current.get('buzz')?.click();
-      }
-      if (e.key.toLowerCase() === "f") {
-        mapRef.current.get('fizzbuzz')?.click();
-      }
-      if (e.key.toLowerCase() === "r") {
+      if (e.key.toLowerCase() === 'r') {
         reset();
+        return;
+      }
+
+      const inputKey = e.key.toLowerCase();
+      if (!((['a', 's', 'd', 'f']).includes(inputKey))) return;
+      const action = keyToActionMap[inputKey as keyof typeof keyToActionMap];
+      if (isCorrect) {
+        handleChange(action);
       }
     };
 
@@ -90,10 +92,10 @@ function FizzbuzzUI() {
     if (isCorrect && !isTimeUp) {
       return (
         <div>
-          <button onClick={() => handleChange('number')} className={fizzbuzzStyles.button} key='number' ref={el => {mapRef.current.set('number', el);}}>{number} (A)</button>
-          <button onClick={() => handleChange('fizz')} className={fizzbuzzStyles.button} key='fizz' ref={el => {mapRef.current.set('fizz', el);}}>Fizz (S)</button>
-          <button onClick={() => handleChange('buzz')} className={fizzbuzzStyles.button} key='buzz' ref={el => {mapRef.current.set('buzz', el);}}>Buzz (D)</button>
-          <button onClick={() => handleChange('fizzbuzz')} className={fizzbuzzStyles.button} key='fizzbuzz' ref={el => {mapRef.current.set('fizzbuzz', el);}}>FizzBuzz (F)</button>
+          <button onClick={() => handleChange('number')} className={fizzbuzzStyles.button} key='number'>{number} (A)</button>
+          <button onClick={() => handleChange('fizz')} className={fizzbuzzStyles.button} key='fizz'>Fizz (S)</button>
+          <button onClick={() => handleChange('buzz')} className={fizzbuzzStyles.button} key='buzz'>Buzz (D)</button>
+          <button onClick={() => handleChange('fizzbuzz')} className={fizzbuzzStyles.button} key='fizzbuzz'>FizzBuzz (F)</button>
 
         </div>
       );
